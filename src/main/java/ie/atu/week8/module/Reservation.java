@@ -1,18 +1,28 @@
 package ie.atu.week8.module;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDate;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Reservation {
 
-    @NotBlank(message = "Reservation Tag must be entered")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservationId;
 
-    @NotBlank(message = "Reservation Tag must be entered")
+    @NotNull(message = "Reservation Tag must be entered")
     private Long reservationTag;
 
     @NotBlank(message= "Equipment Tag is required")
