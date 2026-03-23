@@ -22,9 +22,6 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservationId;
 
-    @NotNull(message = "Reservation Tag must be entered")
-    private Long reservationTag;
-
     @NotBlank(message= "Equipment Tag is required")
     private String equipmentTag;
 
