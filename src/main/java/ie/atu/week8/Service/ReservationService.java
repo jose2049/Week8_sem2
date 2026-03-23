@@ -6,6 +6,7 @@ import ie.atu.week8.module.Reservation;
 import ie.atu.week8.repository.ReservationRepo;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,12 +47,20 @@ public class ReservationService {
         reservationRepository.save(reservation);
         return reservation;
     }
-
+    //get all
     public List<Reservation> getAllReservations(){
         return reservationRepository.findAll();
     }
-
+    //get by id
     public Reservation getReservationById(Long id){
         return reservationRepository.findById(id).orElseThrow(() -> new ReservationNotFoundException("Reservation not found"));
+    }
+    //get by date
+    public List<Reservation> getAllReservationsByDate(LocalDate reservationDate){
+        return reservationRepository.findByReservationDate(reservationDate);
+    }
+    //get by tag and date
+    public List<Reservation> getAllReservationsByTagAndDate(String equipmentTag, LocalDate reservationDate){
+        return reservationRepository.findByEquipmentTagAndReservationDate(equipmentTag, reservationDate);
     }
 }
